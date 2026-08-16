@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bono 50% - OroBet</title>
+  <meta name="description" content="Reclamá tu bono de bienvenida 50% en OroBet.">
+  
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* --- FILTRO DE CONFIRMACIÓN (EL PASO EXTRA) --- */
+    #filtro-inicial {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: #000;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .caja-filtro {
+      width: 85%;
+      max-width: 350px;
+      padding: 30px;
+      border: 2px solid #f1c40f; /* Dorado OroBet */
+      border-radius: 20px;
+      background: #111;
+    }
+    .btn-entrar {
+      background: #f1c40f;
+      color: #000;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 20px;
+      width: 100%;
+      text-transform: uppercase;
+    }
+
+    /* --- ESTILOS DE LA LANDING OROBET --- */
+    .container {
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      background: rgba(20, 20, 20, 0.95);
+      border: 2px solid #f1c40f;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 0 25px rgba(241, 196, 15, 0.4);
+      display: none; /* Oculto hasta confirmar */
+    }
+    .hero-img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      animation: shine 3s infinite alternate;
+    }
+    @keyframes shine {
+      from { filter: brightness(1); }
+      to { filter: brightness(1.2) drop-shadow(0 0 8px #f1c40f); }
+    }
+    h2 {
+      margin: 0 0 15px 0;
+      color: #f1c40f;
+      text-transform: uppercase;
+      font-size: 26px;
+    }
+    .info-box {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border: 1px dashed #f1c40f;
+    }
+    .highlight {
+      color: #25D366;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 15px;
+      border-radius: 10px;
+      border: 2px solid #333;
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 15px;
+      outline: none;
+      background: #fff;
+      color: #000;
+    }
+    .btn-wa {
+      width: 100%;
+      padding: 18px;
+      background: #25D366;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: 0.3s;
+    }
+    .footer-text { font-size: 12px; color: #777; margin-top: 15px; }
+  </style>
+
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '887455550280201'); // Cambiar este ID si OroBet usa otro Píxel
+    fbq('track', 'PageView');
+  </script>
+</head>
+<body>
+
+<div id="filtro-inicial">
+  <div class="caja-filtro">
+    <h2 style="font-size: 22px;">¡BIENVENIDO A ORO BET!</h2>
+    <p>Confirmá que sos mayor de edad para ingresar y reclamar tu <b>Bono del 50%</b> de hoy.</p>
+    <button class="btn-entrar" onclick="confirmarIngreso()">SÍ, SOY MAYOR Y QUIERO EL BONO</button>
+    <p style="font-size: 11px; margin-top: 15px; color: #555;">Acceso exclusivo para mayores de 18 años.</p>
+  </div>
+</div>
+
+<div class="container" id="main-container">
+  <img src="imagen.png" alt="OroBet Bono 50%" class="hero-img"> <h2>¡Bono 50% OroBet!</h2>
+  
+  <div class="info-box">
+    <p>Carga mínima: <span class="highlight">$3.000</span></p>
+    <p>Retiros rápidos las 24hs</p>
+  </div>
+
+  <input id="nombreCliente" type="text" placeholder="Tu Nombre y Apellido" required>
+  
+  <button onclick="irAWhatsApp()" class="btn-wa">
+    RECLAMAR MI USUARIO OROBET
+  </button>
+
+  <p class="footer-text">Juego responsable. +18 años.</p>
+</div>
+
+<script>
+function confirmarIngreso() {
+    document.getElementById('filtro-inicial').style.display = 'none';
+    document.getElementById('main-container').style.display = 'block';
+}
+
+function irAWhatsApp() {
+  const inputNombre = document.getElementById("nombreCliente");
+  const nombre = inputNombre.value.trim();
+  
+  if (nombre === "") {
+    alert("Por favor, ingresá tu nombre.");
+    inputNombre.focus();
+    return;
+  }
+
+  // EVENTO DE CONVERSIÓN PARA OROBET
+  fbq('track', 'Lead', {
+    content_name: 'Registro OroBet',
+    value: 1.0,
+    currency: 'USD'
+  });
+
+  // MENSAJE PERSONALIZADO PARA OROBET
+  const mensaje = `¡Hola! Soy ${nombre}. Vi el anuncio de OroBet por el bono del 50%. ¿Me creas un usuario?`;
+  const url = "https://wa.me/5492235337483?text=" + encodeURIComponent(mensaje);
+
+  setTimeout(function(){
+    window.location.href = url;
+  }, 400);
+}
+</script>
+
+</body>
+</html>
